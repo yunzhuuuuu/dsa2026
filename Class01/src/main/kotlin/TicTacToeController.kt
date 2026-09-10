@@ -5,16 +5,10 @@
 abstract class TicTacToeController(
     val board: TicTacToeBoard
 ) {
-
-    /**
-     * Prompt the player to make a move on the board.
-     */
     abstract fun move()
 }
 
-/**
- * A text-based controller, reads moves from standard input and updates the board.
- */
+
 class TextController(
     board: TicTacToeBoard
 ) : TicTacToeController(board) {

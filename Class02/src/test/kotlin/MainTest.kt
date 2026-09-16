@@ -1,5 +1,3 @@
-package org.example
-
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -119,5 +117,39 @@ class LinkedListStackTest {
         assertEquals(7, stack.peek())
         assertEquals(7, stack.peek())
         assertFalse(stack.isEmpty())
+    }
+}
+
+class LinkedListQueueTest {
+    @Test
+    fun `new queue is empty`() {
+        val queue = LinkedListQueue<Int>()
+
+        assertTrue(queue.isEmpty())
+        assertNull(queue.peek())
+        assertNull(queue.dequeue())
+    }
+
+    @Test
+    fun `queue removes items in first in first out order`() {
+        val queue = LinkedListQueue<String>()
+        queue.enqueue("first")
+        queue.enqueue("second")
+
+        assertFalse(queue.isEmpty())
+        assertEquals("first", queue.dequeue())
+        assertEquals("second", queue.dequeue())
+        assertNull(queue.dequeue())
+        assertTrue(queue.isEmpty())
+    }
+
+    @Test
+    fun `peek does not remove the front item`() {
+        val queue = LinkedListQueue<Int>()
+        queue.enqueue(7)
+
+        assertEquals(7, queue.peek())
+        assertEquals(7, queue.peek())
+        assertFalse(queue.isEmpty())
     }
 }
